@@ -431,11 +431,9 @@ export default function useNavigationBuilder<
       // We do it in a timeout because we need to detect if another navigator mounted in the meantime
       // For example, if another navigator has started rendering, we should skip cleanup
       // Otherwise, our cleanup step will cleanup state for the other navigator and re-initialize it
-      setTimeout(() => {
-        if (getCurrentState() !== undefined && getKey() === navigatorKey) {
-          setState(undefined);
-        }
-      }, 0);
+     if (getCurrentState() !== undefined && getKey() === navigatorKey) {
+        setState(undefined);
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
